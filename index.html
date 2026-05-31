@@ -165,4 +165,53 @@ setTimeout(()=>heart.remove(),4000);
 
 </script>
 </body>
+  <!-- === ĐOẠN CODE THÊM NÚT BẬT NHẠC === -->
+<!-- 1. Thẻ nhạc (Thay 'nhac.mp3' bằng tên file nhạc của bạn nếu khác tên nhé) -->
+<audio id="myAudio" src="nhac.mp3" loop></audio>
+
+<!-- 2. Nút bấm nhạc nổi ở góc màn hình -->
+<button id="musicBtn">🎵 Bật Nhạc</button>
+
+<!-- 3. CSS làm đẹp cho nút -->
+<style>
+    #musicBtn {
+        position: fixed;
+        bottom: 30px;    /* Cách mép dưới màn hình 30px */
+        right: 30px;     /* Cách mép phải màn hình 30px */
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: #ff6b81; /* Màu hồng dễ thương */
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        z-index: 9999;
+        transition: all 0.3s ease;
+    }
+    #musicBtn:hover { transform: scale(1.05); }
+</style>
+
+<!-- 4. Lệnh JavaScript để click là phát nhạc -->
+<script>
+    const audio = document.getElementById('myAudio');
+    const btn = document.getElementById('musicBtn');
+
+    btn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play().then(() => {
+                btn.innerHTML = "⏸️ Dừng Nhạc";
+                btn.style.background = "#ff4d4d"; /* Đổi sang màu đỏ */
+            }).catch(err => {
+                alert("Không thể phát nhạc, hãy thử lại!");
+            });
+        } else {
+            audio.pause();
+            btn.innerHTML = "🎵 Bật Nhạc";
+            btn.style.background = "#ff6b81"; /* Về màu hồng */
+        }
+    });
+</script>
+<!-- === HẾT ĐOẠN CODE LÀM NHẠC === -->
 </html>
