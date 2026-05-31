@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quốc Tế Thiếu Nhi - Anh Thư</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(#ffd6e7,#fff);
+text-align:center;
+margin:0;
+color:#ff4f91;
+}
+
+h1{
+margin-top:30px;
+font-size:45px;
+}
+
+.slider{
+width:90%;
+max-width:400px;
+margin:20px auto;
+}
+
+.slider img{
+width:100%;
+border-radius:20px;
+display:none;
+}
+
+.slider img.active{
+display:block;
+}
+
+.letter{
+background:white;
+padding:20px;
+width:90%;
+max-width:700px;
+margin:20px auto;
+border-radius:20px;
+box-shadow:0 0 15px rgba(0,0,0,.1);
+line-height:1.8;
+}
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:50px;
+background:#ff4f91;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+#giftBox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,220,235,.97);
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+#giftBox img{
+width:300px;
+border-radius:25px;
+}
+
+.heart{
+position:fixed;
+font-size:30px;
+animation:fly 4s linear forwards;
+}
+
+@keyframes fly{
+from{
+transform:translateY(0);
+opacity:1;
+}
+to{
+transform:translateY(-700px);
+opacity:0;
+}
+}
+</style>
+</head>
+<body>
+  <h1>💖 Phạm Lê Anh Thư 💖</h1>
+<h2>🎈 Chúc mừng Quốc tế Thiếu nhi 01/06 🎈</h2>
+<div class="slider">
+<img src="anh1.jpg" class="active">
+<img src="anh2.jpg">
+<img src="anh3.jpg">
+<img src="anh4.jpg">
+<img src="anh5.jpg">
+</div>
+<audio controls autoplay loop>
+<source src="nhac.mp3" type="audio/mpeg">
+</audio>
+<div class="letter">
+  <h3>💌 Thư gửi bạn nhỏ</h3>
+  <p>
+Hôm nay 01-06-2025 Là ngày "Quốc tế thiếu nhi".
+<br><br>
+</p>
+  </div>
+  <div id="giftBox">
+    <img src="anh2.jpg">
+    <h2>💖 Bạn nhỏ chính là món quà tuyệt vời nhất 💖</h2>
+</div>
+  <script>
+
+const slides=document.querySelectorAll(".slider img");
+
+let current=0;
+
+setInterval(()=>{
+
+slides[current].classList.remove("active");
+
+current=(current+1)%slides.length;
+
+slides[current].classList.add("active");
+
+},3000);
+
+function openGift(){
+
+document.getElementById("giftBox").style.display="flex";
+
+setInterval(createHeart,200);
+
+}
+
+function closeGift(){
+
+document.getElementById("giftBox").style.display="none";
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.className="heart";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.bottom="0";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),4000);
+
+}
+
+</script>
+</body>
+</html>
